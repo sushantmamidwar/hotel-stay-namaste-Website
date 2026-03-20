@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dashboard — StayNamasté</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🕌</span><span>Stay<em>Namasté</em></span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#hotels">Hotels</a></li>
+      <li><a href="room_booking.html">Book Room</a></li>
+      <li><a href="table_booking.html">Book Table</a></li>
+      <li><a href="food_order.html">Order Food</a></li>
+      <li><button class="dark-mode-toggle" id="darkToggle"><i class="fas fa-moon"></i></button></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="index.html">Home</a> / My Dashboard</p>
+  <h1>My Dashboard</h1>
+  <p>Welcome back! Manage your bookings, loyalty points, and preferences here.</p>
+</div>
+
+<div class="dashboard-page">
+
+  <!-- LOYALTY CARD -->
+  <div class="loyalty-card">
+    <div>
+      <div class="loyalty-label">Your Loyalty Points</div>
+      <div class="loyalty-points-display" id="dashPoints">0</div>
+      <div class="loyalty-label" style="margin-top:0.3rem">🏆 Gold Member</div>
+    </div>
+    <div class="loyalty-progress">
+      <p>Progress to Platinum (5000 pts)</p>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="dashProgressBar" style="width:0%"></div>
+      </div>
+      <p style="margin-top:0.4rem;font-size:0.78rem;opacity:0.7" id="pointsToGo">Loading...</p>
+    </div>
+    <div style="text-align:center">
+      <div style="font-size:0.82rem;opacity:0.7;margin-bottom:0.4rem">Redeem at</div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--gold-light)">5000 pts = ₹500 Off</div>
+      <a href="room_booking.html" class="btn-primary" style="margin-top:0.8rem;display:inline-block;font-size:0.85rem;padding:0.6rem 1.4rem">Book & Earn More</a>
+    </div>
+  </div>
+
+  <!-- QUICK STATS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:2rem">
+    <div class="dash-card" style="text-align:center">
+      <div style="font-size:2rem;margin-bottom:0.5rem">🛏️</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--teal)" id="dashRoomCount">0</div>
+      <div style="font-size:0.85rem;color:var(--text-muted)">Room Bookings</div>
+    </div>
+    <div class="dash-card" style="text-align:center">
+      <div style="font-size:2rem;margin-bottom:0.5rem">🍽️</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--gold)">3</div>
+      <div style="font-size:0.85rem;color:var(--text-muted)">Table Reservations</div>
+    </div>
+    <div class="dash-card" style="text-align:center">
+      <div style="font-size:2rem;margin-bottom:0.5rem">🛒</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--teal-mid)">7</div>
+      <div style="font-size:0.85rem;color:var(--text-muted)">Food Orders</div>
+    </div>
+    <div class="dash-card" style="text-align:center">
+      <div style="font-size:2rem;margin-bottom:0.5rem">💰</div>
+      <div style="font-size:1.8rem;font-weight:700;color:var(--gold)" id="dashSavings">₹0</div>
+      <div style="font-size:0.85rem;color:var(--text-muted)">Total Savings</div>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+    <!-- MY BOOKINGS -->
+    <div class="dash-card" style="grid-column:1/-1">
+      <h3><i class="fas fa-bed" style="color:var(--teal)"></i> My Room Bookings</h3>
+      <div id="dashBookings"><p style="color:var(--text-muted);font-size:0.88rem">No bookings yet. <a href="room_booking.html" style="color:var(--teal)">Book your first room!</a></p></div>
+    </div>
+
+    <!-- WISHLIST -->
+    <div class="dash-card">
+      <h3><i class="fas fa-heart" style="color:#e74c3c"></i> My Wishlist</h3>
+      <div id="dashWishlist"></div>
+    </div>
+
+    <!-- POINTS HISTORY -->
+    <div class="dash-card">
+      <h3><i class="fas fa-trophy" style="color:var(--gold)"></i> Points Activity</h3>
+      <div style="display:flex;flex-direction:column;gap:0.5rem">
+        <div class="booking-item"><div><div class="booking-item-name">Room Booking</div><div class="booking-item-date">Earn 100–300 pts</div></div><span style="color:#2ecc71;font-weight:700">+pts</span></div>
+        <div class="booking-item"><div><div class="booking-item-name">Table Reservation</div><div class="booking-item-date">Earn 30 pts</div></div><span style="color:#2ecc71;font-weight:700">+30</span></div>
+        <div class="booking-item"><div><div class="booking-item-name">Write a Review</div><div class="booking-item-date">Earn 50 pts</div></div><span style="color:#2ecc71;font-weight:700">+50</span></div>
+        <div class="booking-item"><div><div class="booking-item-name">Refer a Friend</div><div class="booking-item-date">Earn 200 pts</div></div><span style="color:#2ecc71;font-weight:700">+200</span></div>
+      </div>
+    </div>
+
+    <!-- SPECIAL OFFERS FOR USER -->
+    <div class="dash-card">
+      <h3><i class="fas fa-tag" style="color:var(--gold)"></i> Your Exclusive Offers</h3>
+      <div style="display:flex;flex-direction:column;gap:0.8rem">
+        <div style="background:var(--gold-pale);border-radius:8px;padding:0.8rem;border:1px solid rgba(201,148,62,0.3)">
+          <div style="font-weight:700;font-size:0.9rem;color:var(--teal)">🏨 Next Booking: 15% Off</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem">Code: <strong>MEMBER15</strong> · Valid till month end</div>
+        </div>
+        <div style="background:var(--gold-pale);border-radius:8px;padding:0.8rem;border:1px solid rgba(201,148,62,0.3)">
+          <div style="font-weight:700;font-size:0.9rem;color:var(--teal)">🍽️ Free Dessert</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem">On your next dining reservation · Code: <strong>SWEETDEAL</strong></div>
+        </div>
+        <div style="background:var(--gold-pale);border-radius:8px;padding:0.8rem;border:1px solid rgba(201,148,62,0.3)">
+          <div style="font-weight:700;font-size:0.9rem;color:var(--teal)">🎁 Birthday Special</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem">30% off on your birthday month · Code: <strong>BDAY30</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE SETTINGS -->
+    <div class="dash-card">
+      <h3><i class="fas fa-user" style="color:var(--teal)"></i> Quick Actions</h3>
+      <div style="display:flex;flex-direction:column;gap:0.8rem;margin-top:0.5rem">
+        <a href="room_booking.html" class="btn-primary" style="text-align:center;display:block">🛏️ Book a Room</a>
+        <a href="table_booking.html" class="btn-primary" style="text-align:center;display:block;background:var(--gold)">🍽️ Reserve a Table</a>
+        <a href="food_order.html" class="btn-primary" style="text-align:center;display:block;background:var(--teal-mid)">🛒 Order Food</a>
+        <a href="index.html#contact" class="btn-primary" style="text-align:center;display:block;background:var(--dark)">💬 Contact Support</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <p>© 2026 StayNamasté · Created by <a href="#" style="color:var(--gold)">Sushant Sunil Mamidwar</a></p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Points
+  const pts = parseInt(localStorage.getItem('sn-points') || '0');
+  const ptsDisplay = document.getElementById('dashPoints');
+  const progressBar = document.getElementById('dashProgressBar');
+  const pointsToGo  = document.getElementById('pointsToGo');
+  const savings      = document.getElementById('dashSavings');
+  if (ptsDisplay) ptsDisplay.textContent = pts.toLocaleString('en-IN');
+  if (progressBar) progressBar.style.width = Math.min((pts / 5000) * 100, 100) + '%';
+  if (pointsToGo) pointsToGo.textContent = pts >= 5000 ? '🎉 Platinum unlocked!' : `${5000 - pts} pts to Platinum`;
+  if (savings) savings.textContent = '₹' + Math.floor(pts / 100) * 10;
+
+  // Bookings
+  const bookings = JSON.parse(localStorage.getItem('sn-bookings') || '[]');
+  const dashRoomCount = document.getElementById('dashRoomCount');
+  if (dashRoomCount) dashRoomCount.textContent = bookings.length;
+  const dashBookings = document.getElementById('dashBookings');
+  if (dashBookings && bookings.length > 0) {
+    dashBookings.innerHTML = bookings.map(b => `
+      <div class="booking-item">
+        <div>
+          <div class="booking-item-name">${b.hotel}</div>
+          <div class="booking-item-date">${b.room} · ${b.date} · Booking #${b.id}</div>
+        </div>
+        <span class="booking-status status-confirmed">✓ Confirmed</span>
+      </div>`).join('');
+  }
+
+  // Wishlist
+  const wl = JSON.parse(localStorage.getItem('sn-wishlist') || '[]');
+  const dashWishlist = document.getElementById('dashWishlist');
+  if (dashWishlist) {
+    dashWishlist.innerHTML = wl.length === 0
+      ? '<p style="color:var(--text-muted);font-size:0.88rem">No saved hotels. Click ❤️ on any hotel card!</p>'
+      : wl.map(h => `
+          <div class="booking-item">
+            <div class="booking-item-name">❤️ ${h}</div>
+            <a href="room_booking.html" style="font-size:0.8rem;color:var(--teal);font-weight:600">Book →</a>
+          </div>`).join('');
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Food — StayNamasté</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🕌</span><span>Stay<em>Namasté</em></span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#hotels">Hotels</a></li>
+      <li><a href="room_booking.html">Book Room</a></li>
+      <li><a href="table_booking.html">Book Table</a></li>
+      <li><a href="login.html" class="nav-btn">Sign In</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="index.html">Home</a> / Order Food</p>
+  <h1>Order Food & Room Service</h1>
+  <p>From our kitchens to your room or doorstep — fresh, authentic Indian cuisine</p>
+</div>
+
+<!-- CATEGORY PILLS -->
+<div style="background:var(--ivory);padding:1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border)">
+  <div class="city-tabs" style="max-width:800px;margin:0 auto">
+    <button class="city-tab active" onclick="filterMenu('all',this)">All Items</button>
+    <button class="city-tab" onclick="filterMenu('main',this)">🍛 Main Course</button>
+    <button class="city-tab" onclick="filterMenu('starters',this)">🥗 Starters</button>
+    <button class="city-tab" onclick="filterMenu('biryani',this)">🍚 Biryani</button>
+    <button class="city-tab" onclick="filterMenu('pizza',this)">🍕 Pizza</button>
+    <button class="city-tab" onclick="filterMenu('drinks',this)">☕ Drinks</button>
+    <button class="city-tab" onclick="filterMenu('desserts',this)">🍮 Desserts</button>
+  </div>
+</div>
+
+<div class="food-order-grid">
+  <!-- MENU -->
+  <div class="menu-panel">
+
+    <!-- STARTERS -->
+    <div class="menu-category" data-cat="starters">
+      <h3 class="menu-section-title">🥗 Starters</h3>
+      <div class="menu-items-grid">
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/food-samosa.jpg" alt="Samosa"/>
+          <div class="menu-item-info">
+            <h4>Crispy Samosa Platter</h4>
+            <p>4 samosas with mint chutney & tamarind dip</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹199</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Crispy Samosa Platter', 199)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/food-chicken-tikka.jpg" alt="Tikka"/>
+          <div class="menu-item-info">
+            <h4>Chicken Tikka</h4>
+            <p>Tandoor-marinated chicken skewers with onion rings</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹349</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Chicken Tikka', 349)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Tomato_Shorba.jpg" alt="Soup"/>
+          <div class="menu-item-info">
+            <h4>Tomato Shorba</h4>
+            <p>Spiced Indian-style tomato soup with cream</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹149</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Tomato Shorba', 149)">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIRYANI -->
+    <div class="menu-category" data-cat="biryani">
+      <h3 class="menu-section-title">🍚 Signature Biryani</h3>
+      <div class="menu-items-grid">
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Hyderabadi Dum Biryani.jpg" alt="Biryani"/>
+          <div class="menu-item-info">
+            <h4>Hyderabadi Dum Biryani</h4>
+            <p>Authentic slow-cooked basmati with saffron & raita</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹499</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Hyderabadi Dum Biryani', 499)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Garden Veg Biryani.jpg" alt="Veg Biryani"/>
+          <div class="menu-item-info">
+            <h4>Garden Veg Biryani</h4>
+            <p>Seasonal vegetables in aromatic basmati rice</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹349</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Garden Veg Biryani', 349)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Mutton Biryani Royal.jpg" alt="Mutton Biryani"/>
+          <div class="menu-item-info">
+            <h4>Mutton Biryani Royal</h4>
+            <p>Tender slow-braised mutton with whole spices</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹599</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Mutton Biryani Royal', 599)">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN COURSE -->
+    <div class="menu-category" data-cat="main">
+      <h3 class="menu-section-title">🍛 Main Course</h3>
+      <div class="menu-items-grid">
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/food-butter-chicken.jpg" alt="Butter Chicken"/>
+          <div class="menu-item-info">
+            <h4>Butter Chicken</h4>
+            <p>Creamy tomato-based curry with naan</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹449</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Butter Chicken', 449)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Dal Makhani.jpg" alt="Dal Makhani"/>
+          <div class="menu-item-info">
+            <h4>Dal Makhani</h4>
+            <p>Slow-cooked black lentils with cream & butter</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹299</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Dal Makhani', 299)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/food-thali.jpg" alt="Thali"/>
+          <div class="menu-item-info">
+            <h4>Grand Thali</h4>
+            <p>Complete Indian meal — dal, sabzi, roti, rice, pickle, dessert</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹699</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Grand Thali', 699)">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PIZZA -->
+    <div class="menu-category" data-cat="pizza">
+      <h3 class="menu-section-title">🍕 Wood-Fire Pizza</h3>
+      <div class="menu-items-grid">
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Classic Margherita.jpg" alt="Margherita"/>
+          <div class="menu-item-info">
+            <h4>Classic Margherita</h4>
+            <p>San Marzano tomato, mozzarella, fresh basil</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹449</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Classic Margherita Pizza', 449)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/BBQ Chicken Pizza.webp" alt="BBQ Chicken"/>
+          <div class="menu-item-info">
+            <h4>BBQ Chicken Pizza</h4>
+            <p>Smoked chicken, BBQ sauce, red onion, jalapeños</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹549</span>
+              <button class="add-to-cart-btn" onclick="addToCart('BBQ Chicken Pizza', 549)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Spicy Paneer Pizza.jpg" alt="Paneer Pizza"/>
+          <div class="menu-item-info">
+            <h4>Spicy Paneer Pizza</h4>
+            <p>Indian twist — tandoori paneer, bell peppers, chaat masala</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹499</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Spicy Paneer Pizza', 499)">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="menu-category" data-cat="drinks">
+      <h3 class="menu-section-title">☕ Beverages</h3>
+      <div class="menu-items-grid">
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Artisan Filter Coffee.jpg" alt="Coffee"/>
+          <div class="menu-item-info">
+            <h4>Artisan Filter Coffee</h4>
+            <p>South Indian single-origin filter coffee</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹149</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Artisan Filter Coffee', 149)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/food-mango-lassi.jpg" alt="Mango Lassi"/>
+          <div class="menu-item-info">
+            <h4>Alphonso Mango Lassi</h4>
+            <p>Premium Alphonso mango with thick creamy curd</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹179</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Alphonso Mango Lassi', 179)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Fresh Watermelon Juice.jpg" alt="Juice"/>
+          <div class="menu-item-info">
+            <h4>Fresh Watermelon Juice</h4>
+            <p>Cold-pressed seasonal fruit juice, no added sugar</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹129</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Fresh Watermelon Juice', 129)">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="menu-category" data-cat="desserts">
+      <h3 class="menu-section-title">🍮 Desserts</h3>
+      <div class="menu-items-grid">
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/food-gulabjamun.jpg" alt="Gulab Jamun"/>
+          <div class="menu-item-info">
+            <h4>Gulab Jamun Fondue</h4>
+            <p>Warm gulab jamun with rose syrup & vanilla ice cream</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹249</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Gulab Jamun Fondue', 249)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/food-kulfi.jpg" alt="Kulfi"/>
+          <div class="menu-item-info">
+            <h4>Pista Kulfi</h4>
+            <p>Traditional Indian ice cream with pistachios & cardamom</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹199</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Pista Kulfi', 199)">+ Add</button>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item-card">
+          <img src="image_list/Food Dining Section/Dark Chocolate Brownie.jpg" alt="Brownie"/>
+          <div class="menu-item-info">
+            <h4>Dark Chocolate Brownie</h4>
+            <p>Warm fudgy brownie with salted caramel sauce</p>
+            <div class="menu-item-footer">
+              <span class="menu-item-price">₹279</span>
+              <button class="add-to-cart-btn" onclick="addToCart('Dark Chocolate Brownie', 279)">+ Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CART -->
+  <div class="cart-panel">
+    <h3>🛒 Your Order <span id="cartCount" style="background:var(--gold);color:white;padding:2px 8px;border-radius:50px;font-size:0.8rem;margin-left:0.5rem">0</span></h3>
+
+    <div style="margin-bottom:0.8rem">
+      <label style="font-size:0.78rem;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:0.05em">Delivery To</label>
+      <select style="width:100%;margin-top:0.3rem;padding:0.5rem;border:1.5px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;background:var(--ivory)">
+        <option>Room Service (In-Room)</option>
+        <option>Dine-In (Restaurant)</option>
+        <option>Takeaway</option>
+        <option>Home Delivery</option>
+      </select>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">🛒 Your cart is empty</div>
+    </div>
+
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+    <div style="font-size:0.75rem;color:var(--text-muted);text-align:right;margin-top:0.2rem">+ 5% GST applicable</div>
+
+    <button class="checkout-btn" id="checkoutBtn">
+      Place Order <i class="fas fa-arrow-right"></i>
+    </button>
+    <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:0.7rem">🕐 Ready in 30–45 mins</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <p>© 2025 StayNamasté · Created by <a href="#" style="color:var(--gold)">Sushant Mamidwar</a></p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+function filterMenu(cat, btn) {
+  document.querySelectorAll('.city-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.menu-category').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

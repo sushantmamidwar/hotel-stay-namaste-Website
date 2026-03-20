@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Table — StayNamasté</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">🕌</span><span>Stay<em>Namasté</em></span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#hotels">Hotels</a></li>
+        <li><a href="room_booking.html">Book Room</a></li>
+        <li><a href="food_order.html">Order Food</a></li>
+        <li><a href="login.html" class="nav-btn">Sign In</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <p class="breadcrumb"><a href="index.html">Home</a> / Reserve a Table</p>
+    <h1>Reserve a Dining Table</h1>
+    <p>From intimate dinners to grand family feasts — we have the perfect table for you</p>
+  </div>
+
+  <!-- TABLE TYPES SHOWCASE -->
+  <div style="background:var(--ivory);padding:3rem 2rem">
+    <div class="section-header" style="margin-bottom:2rem">
+      <p class="section-tag">Our Dining Spaces</p>
+      <h2>Choose Your Setting</h2>
+    </div>
+    <div class="room-cards-grid" style="max-width:1000px;margin:0 auto">
+      <div class="room-select-card selected" onclick="selectTable(this,'Royal Corner Table','For 2 guests',899)"
+        data-room="Royal Corner Table">
+        <img src="image_list/Dining Table Images/table-royal-corner.jpg" alt="Royal Corner" />
+        <div class="room-name">Royal Corner</div>
+        <div class="room-price">from ₹899/cover</div>
+        <div class="room-features">For 2 · Candlelit · Intimate</div>
+      </div>
+      <div class="room-select-card" onclick="selectTable(this,'Sunset View Table','For 2-4 guests',1299)"
+        data-room="Sunset View Table">
+        <img src="image_list/Dining Table Images/table-sunset-view.jpg" alt="Sunset View" />
+        <div class="room-name">Sunset View Table</div>
+        <div class="room-price">from ₹1,299/cover</div>
+        <div class="room-features">For 4 · Terrace · Sunset</div>
+      </div>
+      <div class="room-select-card" onclick="selectTable(this,'Family Feast Table','For 6-8 guests',699)"
+        data-room="Family Feast Table">
+        <img src="image_list/Dining Table Images/table-family-feast.jpg" alt="Family Feast" />
+        <div class="room-name">Family Feast Hall</div>
+        <div class="room-price">from ₹699/cover</div>
+        <div class="room-features">For 8 · Private Room · Thali</div>
+      </div>
+      <!-- <div class="room-select-card" onclick="selectTable(this,'Chef's Special Table','For 2-3 guests',1599)" -->
+      <div class="room-select-card" onclick="selectTable(this,'Chef Special Table','For 2-3 guests',1599)"
+
+        data-room="Chef's Special Table">
+        
+        <img src="image_list/Dining Table Images/table-chefs-counter.jpg" alt="Chef Special" />
+        <div class="room-name">Chef's Counter</div>
+        <div class="room-price">from ₹1,599/cover</div>
+        <div class="room-features">For 3 · Open Kitchen · Tasting Menu</div>
+      </div>
+      <div class="room-select-card" onclick="selectTable(this,'Rooftop Garden Table','For 4-6 guests',1199)"
+        data-room="Rooftop Garden Table">
+        <img src="image_list/Dining Table Images/table-rooftop-garden.jpg" alt="Rooftop" />
+        <div class="room-name">Rooftop Garden</div>
+        <div class="room-price">from ₹1,199/cover</div>
+        <div class="room-features">For 6 · Open Air · Skyline View</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="booking-wrapper">
+    <div class="booking-form-card" id="bookingFormCard">
+      <h2>Reserve Your Table</h2>
+      <p class="form-desc">Complete the form below — our team will confirm within 1 hour.</p>
+
+      <form id="bookingForm">
+        <div class="form-grid-2">
+          <div class="booking-section-title">🏨 Restaurant & Table</div>
+
+          <div class="form-field">
+            <label>Select City</label>
+            <select id="citySelect" onchange="updateRestaurants()">
+              <option value="">— Select City —</option>
+              <option>Mumbai</option>
+              <option>Delhi</option>
+              <option>Bangalore</option>
+              <option>Hyderabad</option>
+              <option>Chennai</option>
+              <option>Kolkata</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Select Restaurant / Hotel</label>
+            <select id="restSelect">
+              <option>— Choose city first —</option>
+            </select>
+          </div>
+          <div class="form-field" style="grid-column:1/-1">
+            <label>Selected Table Type</label>
+            <input type="text" id="tableTypeDisplay" value="Royal Corner Table" readonly
+              style="background:var(--gold-pale);color:var(--teal);font-weight:600" />
+          </div>
+
+          <div class="booking-section-title">👤 Guest Details</div>
+          <div class="form-field">
+            <label>Full Name</label>
+            <input type="text" placeholder="e.g. Ananya Kapoor" required />
+          </div>
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 98765 43210" required />
+          </div>
+          <div class="form-field" style="grid-column:1/-1">
+            <label>Email Address</label>
+            <input type="email" placeholder="ananya@email.com" />
+          </div>
+
+          <div class="booking-section-title">📅 Reservation Details</div>
+          <div class="form-field">
+            <label>Date</label>
+            <input type="date" id="resvDate" required />
+          </div>
+          <div class="form-field">
+            <label>Time Slot</label>
+            <select required>
+              <option value="">Select time</option>
+              <option>12:00 PM – Lunch</option>
+              <option>1:00 PM – Lunch</option>
+              <option>2:00 PM – Lunch</option>
+              <option>7:00 PM – Dinner</option>
+              <option>7:30 PM – Dinner</option>
+              <option>8:00 PM – Dinner</option>
+              <option>8:30 PM – Dinner</option>
+              <option>9:00 PM – Dinner</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Number of Guests</label>
+            <select required>
+              <option>1 Guest</option>
+              <option>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4 Guests</option>
+              <option>5 Guests</option>
+              <option>6+ Guests</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Occasion (optional)</label>
+            <select>
+              <option value="">None</option>
+              <option>Birthday 🎂</option>
+              <option>Anniversary 💍</option>
+              <option>Business Dinner 💼</option>
+              <option>Romantic Date 🌹</option>
+              <option>Family Gathering 👨‍👩‍👧</option>
+            </select>
+          </div>
+          <div class="form-field" style="grid-column:1/-1">
+            <label>Special Requests</label>
+            <input type="text" placeholder="e.g. Vegan menu, balloon decorations, window seat..." />
+          </div>
+        </div>
+
+        <div class="price-summary">
+          <div class="price-row"><span>Table</span><span id="tableTypeSummary">Royal Corner Table</span></div>
+          <div class="price-row"><span>Cover Charge (per person)</span><span id="coverCharge">₹899</span></div>
+          <div class="price-row" style="font-size:0.8rem;color:var(--text-muted)"><span colspan="2">* Food & beverages
+              billed separately at the restaurant</span></div>
+        </div>
+
+        <button type="submit" class="booking-submit-btn">
+          <i class="fas fa-utensils"></i> Confirm Table Reservation
+        </button>
+        <p style="text-align:center;font-size:0.78rem;color:var(--text-muted);margin-top:0.8rem">
+          Free cancellation up to 2 hours before your reservation
+        </p>
+      </form>
+    </div>
+
+    <div class="booking-confirm-msg" id="bookingConfirm">
+      <div class="confirm-icon">🍽️</div>
+      <h3>Table Reserved!</h3>
+      <p>Your dining reservation is confirmed. We look forward to welcoming you!</p>
+      <br />
+      <a href="index.html" class="btn-primary">← Back to Home</a>
+      &nbsp;&nbsp;
+      <a href="food_order.html" class="btn-primary" style="background:var(--gold)">Pre-Order Food 🍛</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2025 StayNamasté · Created by <a href="#" style="color:var(--gold)">Sushant Mamidwar</a></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    const restByCity = {
+      'Mumbai': ['The Sea Palace — Marina Restaurant', 'Bandra Grand — Bandra Bites', 'Juhu Beach Resort — Sunset Grill'],
+      'Delhi': ['Imperial Haveli — Mughal Kitchen', 'Lutyens Residency — The Garden Table', 'Delhi Crown — Royal Diner'],
+      'Bangalore': ['Silicon Valley Suites — Farm & Fork', 'Garden City Inn — The Leaf Café', 'MG Road Grand — Canopy'],
+      'Hyderabad': ["Nizam's Palace — Dum Khana", "Cyber Pearl Inn — Pearl Grill", "Pearl City Grand — Heritage Kitchen"],
+      'Chennai': ['Marina Bay Retreat — Coastal Table', 'Chettinad Palace — Spice Route', 'Adyar Riverside — River View Bistro'],
+      'Kolkata': ['Victoria Heritage — Adda Diner', 'Howrah Grand — Riverside Table', 'Salt Lake Suites — The Bong Feast'],
+    };
+    function updateRestaurants() {
+      const city = document.getElementById('citySelect').value;
+      const sel = document.getElementById('restSelect');
+      sel.innerHTML = '';
+      (restByCity[city] || []).forEach(r => {
+        const o = document.createElement('option'); o.value = r; o.textContent = r; sel.appendChild(o);
+      });
+      if (!restByCity[city]) sel.innerHTML = '<option>— Choose city first —</option>';
+    }
+    let selectedCover = 899;
+    function selectTable(el, name, guests, price) {
+      document.querySelectorAll('.room-select-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('tableTypeDisplay').value = name;
+      document.getElementById('tableTypeSummary').textContent = name;
+      document.getElementById('coverCharge').textContent = '₹' + price.toLocaleString('en-IN');
+      selectedCover = price;
+    }
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('resvDate').min = today;
+  </script>
+</body>
+
+</html>

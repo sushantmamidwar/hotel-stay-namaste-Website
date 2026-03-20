@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Room — StayNamasté</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">🕌</span><span>Stay<em>Namasté</em></span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html#hotels">Hotels</a></li>
+        <li><a href="index.html#food">Dining</a></li>
+        <li><a href="table_booking.html">Book Table</a></li>
+        <li><a href="food_order.html">Order Food</a></li>
+        <li><a href="login.html" class="nav-btn">Sign In</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <p class="breadcrumb"><a href="index.html">Home</a> / Book a Room</p>
+    <h1>Reserve Your Room</h1>
+    <p>Choose from luxury suites to cosy deluxe rooms across 6 Indian cities</p>
+  </div>
+
+  <div class="booking-wrapper">
+    <div class="booking-form-card" id="bookingFormCard">
+      <h2>Room Reservation</h2>
+      <p class="form-desc">Fill in your details and we'll confirm your booking instantly.</p>
+
+      <form id="bookingForm">
+        <div class="form-grid-2">
+          <div class="booking-section-title">🏨 Choose Your Hotel & Room</div>
+
+          <div class="form-field">
+            <label>Select City</label>
+            <select id="citySelect" onchange="updateHotels()">
+              <option value="">— Select City —</option>
+              <option>Mumbai</option>
+              <option>Delhi</option>
+              <option>Bangalore</option>
+              <option>Hyderabad</option>
+              <option>Chennai</option>
+              <option>Kolkata</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Select Hotel</label>
+            <select id="hotelSelect">
+              <option value="">— Choose city first —</option>
+            </select>
+          </div>
+        </div>
+
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:1rem">Click to select room type:</p>
+        <div class="room-cards-grid">
+          <div class="room-select-card selected" data-room="Deluxe Room">
+            <img src="image_list/room_booking/room-deluxe.jpg" alt="Deluxe" />
+            <div class="room-name">Deluxe Room</div>
+            <div class="room-price">₹4,999/night</div>
+            <div class="room-features">Queen Bed · City View · AC</div>
+          </div>
+          <div class="room-select-card" data-room="Suite Room">
+            <img src="image_list/room_booking/room-suite.jpg" alt="Suite" />
+            <div class="room-name">Suite Room</div>
+            <div class="room-price">₹7,999/night</div>
+            <div class="room-features">King Bed · Sea View · Jacuzzi</div>
+          </div>
+          <div class="room-select-card" data-room="Executive Room">
+            <img src="image_list/room_booking/room-executive.jpg" alt="Executive" />
+            <div class="room-name">Executive Room</div>
+            <div class="room-price">₹6,499/night</div>
+            <div class="room-features">Twin Beds · Work Desk · Lounge</div>
+          </div>
+          <div class="room-select-card" data-room="Family Room">
+            <img src="image_list/room_booking/room-family.jpg" alt="Family" />
+            <div class="room-name">Family Room</div>
+            <div class="room-price">₹5,999/night</div>
+            <div class="room-features">2 Beds · Garden View · Kids Menu</div>
+          </div>
+          <div class="room-select-card" data-room="Presidential Suite">
+            <img src="image_list/room_booking/room-presidential.jpg" alt="Presidential" />
+            <div class="room-name">Presidential Suite</div>
+            <div class="room-price">₹14,999/night</div>
+            <div class="room-features">Private Pool · Butler · Terrace</div>
+          </div>
+        </div>
+
+        <!-- Hidden room type for calc -->
+        <select id="roomType" style="display:none">
+          <option value="Deluxe Room">Deluxe Room</option>
+          <option value="Suite Room">Suite Room</option>
+          <option value="Executive Room">Executive Room</option>
+          <option value="Family Room">Family Room</option>
+          <option value="Presidential Suite">Presidential Suite</option>
+        </select>
+
+        <div class="form-grid-2">
+          <div class="booking-section-title">👤 Guest Details</div>
+          <div class="form-field">
+            <label>Full Name</label>
+            <input type="text" placeholder="e.g. Priya Sharma" required />
+          </div>
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 98765 43210" required />
+          </div>
+          <div class="form-field" style="grid-column:1/-1">
+            <label>Email Address</label>
+            <input type="email" placeholder="priya@email.com" required />
+          </div>
+
+          <div class="booking-section-title">📅 Stay Dates</div>
+          <div class="form-field">
+            <label>Check-In Date</label>
+            <input type="date" id="checkin" required />
+          </div>
+          <div class="form-field">
+            <label>Check-Out Date</label>
+            <input type="date" id="checkout" required />
+          </div>
+          <div class="form-field">
+            <label>Number of Guests</label>
+            <select>
+              <option>1 Guest</option>
+              <option>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4 Guests</option>
+              <option>5+ Guests</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Special Requests</label>
+            <input type="text" placeholder="e.g. Early check-in, high floor" />
+          </div>
+        </div>
+
+        <div class="price-summary">
+          <div class="price-row"><span>Room Rate</span><span id="totalPrice">₹4,999</span></div>
+          <div class="price-row"><span>Duration</span><span id="nightsCount">1 night</span></div>
+          <div class="price-row"><span>GST (12%)</span><span id="taxAmount">₹600</span></div>
+          <div class="price-row total"><span>Grand Total</span><span id="grandTotal">₹5,599</span></div>
+        </div>
+
+        <button type="submit" class="booking-submit-btn">
+          <i class="fas fa-lock"></i> Confirm Reservation
+        </button>
+        <p style="text-align:center;font-size:0.78rem;color:var(--text-muted);margin-top:0.8rem">
+          🔒 Secure booking · Free cancellation up to 24hrs before check-in
+        </p>
+      </form>
+    </div>
+
+    <!-- Confirmation -->
+    <div class="booking-confirm-msg" id="bookingConfirm">
+      <div class="confirm-icon">🎉</div>
+      <h3>Booking Confirmed!</h3>
+      <p>Your reservation has been received. You'll get a confirmation email shortly.</p>
+      <br />
+      <a href="index.html" class="btn-primary">← Back to Home</a>
+      &nbsp;&nbsp;
+      <a href="food_order.html" class="btn-primary" style="background:var(--gold)">Order Room Service 🍽️</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2025 StayNamasté · All rights reserved · Created by <a href="#" style="color:var(--gold)">Sushant
+          Mamidwar</a></p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    const hotelsByCity = {
+      'Mumbai': ['The Sea Palace', 'Bandra Grand', 'Juhu Beach Resort'],
+      'Delhi': ['Imperial Haveli', 'Lutyens Residency', 'Delhi Crown Hotel'],
+      'Bangalore': ['Silicon Valley Suites', 'Garden City Inn', 'MG Road Grand'],
+      'Hyderabad': ["Nizam's Palace Hotel", 'Cyber Pearl Inn', 'Pearl City Grand'],
+      'Chennai': ['Marina Bay Retreat', 'Chettinad Palace', 'Adyar Riverside'],
+      'Kolkata': ['Victoria Heritage', 'Howrah Grand', 'Salt Lake Suites'],
+    };
+    function updateHotels() {
+      const city = document.getElementById('citySelect').value;
+      const hotelSel = document.getElementById('hotelSelect');
+      hotelSel.innerHTML = '';
+      if (hotelsByCity[city]) {
+        hotelsByCity[city].forEach(h => {
+          const opt = document.createElement('option');
+          opt.value = h; opt.textContent = h;
+          hotelSel.appendChild(opt);
+        });
+      } else {
+        hotelSel.innerHTML = '<option>— Choose city first —</option>';
+      }
+    }
+    // Set min dates
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('checkin').min = today;
+    document.getElementById('checkout').min = today;
+  </script>
+</body>
+
+</html>

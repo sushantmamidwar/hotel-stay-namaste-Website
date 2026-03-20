@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel-StayNamasté — By_@SushantMamidwar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<div class="nav-overlay" id="navOverlay"></div>
+
+<body>
+
+  <!-- ======== NAVBAR ======== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <!-- <span class="logo-icon">🕌</span> -->
+        <img src="logo.png" alt="Logo" class="logo-img" />
+        <span>Stay<em>Namasté</em></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hotels">Hotels</a></li>
+        <li><a href="#food">Dining</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="dashboard.html"><i class="fas fa-user-circle"></i> Dashboard</a></li>
+        <li>
+          <button class="dark-mode-toggle" id="darkToggle" title="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+        <li>
+          <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="en">🇬🇧 EN</option>
+            <option value="hi">🇮🇳 HI</option>
+            <option value="ta">Tamil</option>
+            <option value="te">Telugu</option>
+            <option value="bn">Bengali</option>
+          </select>
+        </li>
+        <li><a href="login.html" class="nav-btn">Sign In</a></li>
+        <li><a href="registration.html" class="nav-btn nav-btn-solid">Register</a></li>
+
+        <!-- <li class="sushant-logo">
+            <a href="https://www.linkedin.com/in/sushant-mamidwar-9b4b90257" target="_blank">
+              <img src="Sushant_logo.png" alt="Sushant LinkedIn" class="nav-extra-logo" />
+            </a>
+          </li> -->
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+      <img src="image_list/Homepage/hero_hotel.jpg" alt="Luxury Hotel" class="hero-img" />
+    </div>
+    <div class="hero-content">
+      <p class="hero-tagline" data-i18n="tagline">Discover India's Finest</p>
+      <h1 class="hero-title">Where Luxury Meets <em>Tradition</em></h1>
+      <p class="hero-sub" data-i18n="heroSub">Handpicked hotels in Mumbai, Delhi, Bangalore, Hyderabad, Chennai &
+        Kolkata — rooms, dining, and experiences worth remembering.</p>
+      <div class="hero-actions">
+        <a href="#hotels" class="btn-primary" data-i18n="exploreHotels">Explore Hotels</a>
+        <a href="room_booking.html" class="btn-outline" data-i18n="bookRoom">Book a Room</a>
+      </div>
+    </div>
+    <!-- SEARCH BAR -->
+    <div class="search-bar">
+      <div class="search-group">
+        <label><i class="fas fa-map-marker-alt"></i> City</label>
+        <select id="searchCity">
+          <option>Mumbai</option>
+          <option>Delhi</option>
+          <option>Bangalore</option>
+          <option>Hyderabad</option>
+          <option>Chennai</option>
+          <option>Kolkata</option>
+        </select>
+      </div>
+      <div class="search-group">
+        <label><i class="fas fa-calendar-alt"></i> Check-In</label>
+        <input type="date" id="searchCheckin" />
+      </div>
+      <div class="search-group">
+        <label><i class="fas fa-calendar-check"></i> Check-Out</label>
+        <input type="date" id="searchCheckout" />
+      </div>
+      <div class="search-group">
+        <label><i class="fas fa-users"></i> Guests</label>
+        <select>
+          <option>1 Guest</option>
+          <option>2 Guests</option>
+          <option>3 Guests</option>
+          <option>4+ Guests</option>
+        </select>
+      </div>
+      <a href="room_booking.html" class="search-btn" onclick="passSearchData()">Search <i class="fas fa-search"></i></a>
+    </div>
+  </section>
+
+  <!-- ======== STATS STRIP ======== -->
+  <section class="stats-strip">
+    <div class="stat-item"><span class="stat-num" data-count="6">0</span><span class="stat-label">Metro Cities</span>
+    </div>
+    <div class="stat-item"><span class="stat-num" data-count="18">0</span><span class="stat-label">Premium Hotels</span>
+    </div>
+    <div class="stat-item"><span class="stat-num counter-k" data-count="50">0</span><span class="stat-label">Happy
+        Guests</span></div>
+    <div class="stat-item"><span class="stat-num">4.8★</span><span class="stat-label">Avg Rating</span></div>
+  </section>
+
+  <!-- ======== CHEF'S SPECIAL OF THE DAY ======== -->
+  <section class="chefs-special">
+    <div class="chefs-special-inner">
+      <div class="chefs-badge">👨‍🍳 Chef's Special Today</div>
+      <div class="chefs-content">
+        <h3 id="chefsDish">Hyderabadi Dum Biryani with Raita</h3>
+        <p id="chefsDesc">Slow-cooked aromatic basmati with 23 whole spices — Chef Ravi's signature recipe, available
+          only today!</p>
+        <div class="chefs-meta">
+          <span class="chefs-price">₹499</span>
+          <span class="chefs-timer" id="chefsTimer">Offer ends in: <strong id="chefsCountdown">06:32:14</strong></span>
+        </div>
+      </div>
+      <a href="food_order.html" class="btn-primary">Order Now</a>
+    </div>
+  </section>
+
+  <!-- ======== HOTELS SECTION ======== -->
+  <section id="hotels" class="section hotels-section">
+    <div class="section-header">
+      <p class="section-tag">Our Properties</p>
+      <h2>Hotels Across India</h2>
+      <p class="section-sub">Each hotel is a story — a blend of architecture, culture, and world-class hospitality.</p>
+    </div>
+
+    <!-- ROOM COMPARISON BAR -->
+    <div class="compare-bar" id="compareBar" style="display:none">
+      <div class="compare-bar-inner">
+        <span>Compare Rooms: </span>
+        <div class="compare-chips" id="compareChips"></div>
+        <a href="compare.html" class="btn-primary" id="compareBtn"
+          style="font-size:0.85rem;padding:0.5rem 1.2rem">Compare Now</a>
+        <button onclick="clearCompare()"
+          style="background:none;border:none;color:var(--gold);cursor:pointer;font-size:1.2rem">✕</button>
+      </div>
+    </div>
+
+    <!-- CITY FILTER TABS -->
+    <div class="city-tabs" id="cityTabs">
+      <button class="city-tab active" data-city="all">All Cities</button>
+      <button class="city-tab" data-city="mumbai">Mumbai</button>
+      <button class="city-tab" data-city="delhi">Delhi</button>
+      <button class="city-tab" data-city="bangalore">Bangalore</button>
+      <button class="city-tab" data-city="hyderabad">Hyderabad</button>
+      <button class="city-tab" data-city="chennai">Chennai</button>
+      <button class="city-tab" data-city="kolkata">Kolkata</button>
+    </div>
+
+    <div class="hotels-grid" id="hotelsGrid">
+
+      <!-- HOTEL CARD TEMPLATE (Mumbai) -->
+      <div class="hotel-card reveal" data-city="mumbai" data-hotel="sea-palace">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-sea-palace.jpg" alt="The Sea Palace" loading="lazy" />
+          <span class="hotel-badge">Mumbai</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'The Sea Palace')" title="Save to Wishlist">
+            <i class="far fa-heart"></i>
+          </button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'The Sea Palace','₹4,999')"
+            title="Add to Compare">
+            <i class="fas fa-exchange-alt"></i> Compare
+          </button>
+          <div class="hotel-overlay">
+            <a href="https://www.google.com/maps/@18.9438,72.8231,3a,75y,90t/data=!3m1!1e3" target="_blank"
+              class="overlay-btn">View Details &amp; 360°</a>
+          </div>
+          <div class="avail-badge avail-good">✓ Available</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>The Sea Palace</h3>
+            <span class="hotel-stars">★★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Marine Drive, Mumbai</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★★</div>
+            <span class="rating-count">(428 reviews)</span>
+          </div>
+          <p class="hotel-desc">Ocean-front luxury with panoramic Arabian Sea views, rooftop dining, and a spa
+            sanctuary.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹4,999/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹899/cover</strong></span></div>
+            <div class="param"><i class="fas fa-wine-glass"></i><span>Bar &amp; Rooftop Lounge</span></div>
+            <div class="param"><i class="fas fa-swimming-pool"></i><span>Infinity Pool</span></div>
+          </div>
+          <div class="meal-plans">
+            <span class="meal-tag">🍳 Breakfast</span>
+            <span class="meal-tag">🍽️ Half Board</span>
+            <span class="meal-tag">🌟 Full Board</span>
+          </div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=sea-palace" class="btn-book">Book Room</a>
+            <a href="table_booking.html?hotel=sea-palace" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card reveal" data-city="mumbai" data-hotel="bandra-grand">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-bandra-grand.jpg" alt="Bandra Grand" loading="lazy" />
+          <span class="hotel-badge">Mumbai</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'Bandra Grand')" title="Save to Wishlist"><i
+              class="far fa-heart"></i></button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'Bandra Grand','₹3,499')"><i
+              class="fas fa-exchange-alt"></i> Compare</button>
+          <div class="hotel-overlay">
+            <a href="https://www.google.com/maps/@19.0596,72.8295,3a,75y,90t/data=!3m1!1e3" target="_blank"
+              class="overlay-btn">View Details &amp; 360°</a>
+          </div>
+          <div class="avail-badge avail-good">✓ Available</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>Bandra Grand</h3><span class="hotel-stars">★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Bandra West, Mumbai</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★</div><span class="rating-count">(312 reviews)</span>
+          </div>
+          <p class="hotel-desc">Chic urban hotel in the heart of Bollywood country — stylish rooms, celebrity chef
+            restaurants.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹3,499/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹699/cover</strong></span></div>
+            <div class="param"><i class="fas fa-cocktail"></i><span>Sky Bar &amp; Lounge</span></div>
+            <div class="param"><i class="fas fa-dumbbell"></i><span>Fitness &amp; Spa</span></div>
+          </div>
+          <div class="meal-plans"><span class="meal-tag">🍳 Breakfast</span><span class="meal-tag">🍽️ Half Board</span>
+          </div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=bandra-grand" class="btn-book">Book Room</a>
+            <a href="table_booking.html" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card reveal" data-city="delhi" data-hotel="imperial-haveli">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-imperial-haveli.jpg" alt="Imperial Haveli" loading="lazy" />
+          <span class="hotel-badge">Delhi</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'Imperial Haveli')"><i
+              class="far fa-heart"></i></button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'Imperial Haveli','₹6,499')"><i
+              class="fas fa-exchange-alt"></i> Compare</button>
+          <div class="hotel-overlay"><a href="https://www.google.com/maps/@28.6315,77.2167,3a,75y,90t/data=!3m1!1e3"
+              target="_blank" class="overlay-btn">View Details &amp; 360°</a></div>
+          <div class="avail-badge avail-few">! Only 2 left</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>Imperial Haveli</h3><span class="hotel-stars">★★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Connaught Place, New Delhi</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★★</div><span class="rating-count">(591 reviews)</span>
+          </div>
+          <p class="hotel-desc">Colonial-era grandeur reimagined — Mughal arches, heritage courtyards, Michelin-standard
+            cuisine.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹6,499/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹1,299/cover</strong></span>
+            </div>
+            <div class="param"><i class="fas fa-concierge-bell"></i><span>Butler Service</span></div>
+            <div class="param"><i class="fas fa-chess-rook"></i><span>Heritage Courtyard</span></div>
+          </div>
+          <div class="meal-plans"><span class="meal-tag">🍳 Breakfast</span><span class="meal-tag">🍽️ Half
+              Board</span><span class="meal-tag">🌟 Full Board</span></div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=imperial-haveli" class="btn-book">Book Room</a>
+            <a href="table_booking.html" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card reveal" data-city="delhi" data-hotel="lutyens">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-lutyens.jpg" alt="Lutyens Residency" loading="lazy" />
+          <span class="hotel-badge">Delhi</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'Lutyens Residency')"><i
+              class="far fa-heart"></i></button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'Lutyens Residency','₹5,199')"><i
+              class="fas fa-exchange-alt"></i> Compare</button>
+          <div class="hotel-overlay"><a href="https://www.google.com/maps/@28.5918,77.1722,3a,75y,90t/data=!3m1!1e3"
+              target="_blank" class="overlay-btn">View Details &amp; 360°</a></div>
+          <div class="avail-badge avail-good">✓ Available</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>Lutyens Residency</h3><span class="hotel-stars">★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Lutyen's Bungalow Zone, Delhi</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★</div><span class="rating-count">(274 reviews)</span>
+          </div>
+          <p class="hotel-desc">Understated elegance in Delhi's most prestigious address. Perfect for business
+            travellers.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹5,199/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹999/cover</strong></span></div>
+            <div class="param"><i class="fas fa-briefcase"></i><span>Business Centre</span></div>
+            <div class="param"><i class="fas fa-leaf"></i><span>Garden Terrace</span></div>
+          </div>
+          <div class="meal-plans"><span class="meal-tag">🍳 Breakfast</span></div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=lutyens" class="btn-book">Book Room</a>
+            <a href="table_booking.html" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card reveal" data-city="bangalore" data-hotel="silicon-suites">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-silicon-suites.jpg" alt="Silicon Valley Suites" loading="lazy" />
+          <span class="hotel-badge">Bangalore</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'Silicon Valley Suites')"><i
+              class="far fa-heart"></i></button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'Silicon Valley Suites','₹4,299')"><i
+              class="fas fa-exchange-alt"></i> Compare</button>
+          <div class="hotel-overlay"><a href="https://www.google.com/maps/@12.9352,77.6245,3a,75y,90t/data=!3m1!1e3"
+              target="_blank" class="overlay-btn">View Details &amp; 360°</a></div>
+          <div class="avail-badge avail-good">✓ Available</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>Silicon Valley Suites</h3><span class="hotel-stars">★★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Koramangala, Bangalore</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★★</div><span class="rating-count">(389 reviews)</span>
+          </div>
+          <p class="hotel-desc">Tech-forward luxury — smart rooms, co-working spaces, farm-to-table restaurant and
+            rooftop bar.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹4,299/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹799/cover</strong></span></div>
+            <div class="param"><i class="fas fa-wifi"></i><span>High-Speed WiFi</span></div>
+            <div class="param"><i class="fas fa-laptop"></i><span>Co-Working Lounge</span></div>
+          </div>
+          <div class="meal-plans"><span class="meal-tag">🍳 Breakfast</span><span class="meal-tag">🍽️ Half Board</span>
+          </div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=silicon-suites" class="btn-book">Book Room</a>
+            <a href="table_booking.html" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card reveal" data-city="bangalore" data-hotel="garden-city">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-garden-city.jpg" alt="Garden City Inn" loading="lazy" />
+          <span class="hotel-badge">Bangalore</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'Garden City Inn')"><i
+              class="far fa-heart"></i></button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'Garden City Inn','₹2,999')"><i
+              class="fas fa-exchange-alt"></i> Compare</button>
+          <div class="hotel-overlay"><a href="https://www.google.com/maps/@12.9716,77.6412,3a,75y,90t/data=!3m1!1e3"
+              target="_blank" class="overlay-btn">View Details &amp; 360°</a></div>
+          <div class="avail-badge avail-good">✓ Available</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>Garden City Inn</h3><span class="hotel-stars">★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Indiranagar, Bangalore</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★</div><span class="rating-count">(201 reviews)</span>
+          </div>
+          <p class="hotel-desc">Boutique hotel surrounded by greenery — the perfect escape within the city. Organic spa
+            and café.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹2,999/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹599/cover</strong></span></div>
+            <div class="param"><i class="fas fa-spa"></i><span>Organic Spa</span></div>
+            <div class="param"><i class="fas fa-leaf"></i><span>Botanical Garden</span></div>
+          </div>
+          <div class="meal-plans"><span class="meal-tag">🍳 Breakfast</span></div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=garden-city" class="btn-book">Book Room</a>
+            <a href="table_booking.html" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card reveal" data-city="hyderabad" data-hotel="nizams-palace">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-nizams-palace.jpg" alt="Nizams Palace Hotel" loading="lazy" />
+          <span class="hotel-badge">Hyderabad</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'Nizams Palace')"><i
+              class="far fa-heart"></i></button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'Nizams Palace','₹5,499')"><i
+              class="fas fa-exchange-alt"></i> Compare</button>
+
+          <div class="hotel-overlay"><a href="https://www.google.com/maps/@17.4239,78.4738,3a,75y,90t/data=!3m1!1e3"
+              target="_blank" class="overlay-btn">View Details &amp; 360°</a></div>
+          <div class="avail-badge avail-few">! Only 3 left</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>Nizam's Palace Hotel</h3><span class="hotel-stars">★★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Jubilee Hills, Hyderabad</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★★</div><span class="rating-count">(502 reviews)</span>
+          </div>
+          <p class="hotel-desc">Inspired by the opulence of Hyderabad's royal past — authentic Dum Biryani and palatial
+            suites.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹5,499/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹1,099/cover</strong></span>
+            </div>
+            <div class="param"><i class="fas fa-crown"></i><span>Royal Suite Available</span></div>
+            <div class="param"><i class="fas fa-hat-cowboy"></i><span>Authentic Biryani Night</span></div>
+          </div>
+          <div class="meal-plans"><span class="meal-tag">🍳 Breakfast</span><span class="meal-tag">🍽️ Half
+              Board</span><span class="meal-tag">🌟 Full Board</span></div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=nizams-palace" class="btn-book">Book Room</a>
+            <a href="table_booking.html" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card reveal" data-city="chennai" data-hotel="marina-bay">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-marina-bay.jpg" alt="Marina Bay Retreat" loading="lazy" />
+          <span class="hotel-badge">Chennai</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'Marina Bay Retreat')"><i
+              class="far fa-heart"></i></button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'Marina Bay Retreat','₹3,799')"><i
+              class="fas fa-exchange-alt"></i> Compare</button>
+          <div class="hotel-overlay"><a href="https://www.google.com/maps/@13.0500,80.2824,3a,75y,90t/data=!3m1!1e3"
+              target="_blank" class="overlay-btn">View Details &amp; 360°</a></div>
+          <div class="avail-badge avail-good">✓ Available</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>Marina Bay Retreat</h3><span class="hotel-stars">★★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Marina Beach, Chennai</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★★</div><span class="rating-count">(347 reviews)</span>
+          </div>
+          <p class="hotel-desc">Wake up to the world's second longest beach. Traditional Chettinad cuisine meets modern
+            comfort.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹3,799/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹749/cover</strong></span></div>
+            <div class="param"><i class="fas fa-umbrella-beach"></i><span>Beach Access</span></div>
+            <div class="param"><i class="fas fa-fish"></i><span>Seafood Specialties</span></div>
+          </div>
+          <div class="meal-plans"><span class="meal-tag">🍳 Breakfast</span><span class="meal-tag">🍽️ Half Board</span>
+          </div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=marina-bay" class="btn-book">Book Room</a>
+            <a href="table_booking.html" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hotel-card reveal" data-city="kolkata" data-hotel="victoria-heritage">
+        <div class="hotel-img-wrap">
+          <img src="image_list/Homepage/hotel-victoria-heritage.jpg" alt="Victoria Heritage" loading="lazy" />
+          <span class="hotel-badge">Kolkata</span>
+          <button class="wishlist-btn" onclick="toggleWishlist(this,'Victoria Heritage')"><i
+              class="far fa-heart"></i></button>
+          <button class="compare-check-btn" onclick="addToCompare(this,'Victoria Heritage','₹4,199')"><i
+              class="fas fa-exchange-alt"></i> Compare</button>
+          <div class="hotel-overlay"><a href="https://www.google.com/maps/@22.5448,88.3426,3a,75y,90t/data=!3m1!1e3"
+              target="_blank" class="overlay-btn">View Details &amp; 360°</a></div>
+          <div class="avail-badge avail-good">✓ Available</div>
+        </div>
+        <div class="hotel-info">
+          <div class="hotel-name-row">
+            <h3>Victoria Heritage</h3><span class="hotel-stars">★★★★★</span>
+          </div>
+          <p class="hotel-loc"><i class="fas fa-map-marker-alt"></i> Park Street, Kolkata</p>
+          <div class="hotel-rating-row">
+            <div class="mini-stars">★★★★★</div><span class="rating-count">(418 reviews)</span>
+          </div>
+          <p class="hotel-desc">The soul of the City of Joy — colonial elegance, legendary adda culture, and Bengali
+            fine dining.</p>
+          <div class="hotel-params">
+            <div class="param"><i class="fas fa-bed"></i><span>Rooms from <strong>₹4,199/night</strong></span></div>
+            <div class="param"><i class="fas fa-utensils"></i><span>Dinner from <strong>₹849/cover</strong></span></div>
+            <div class="param"><i class="fas fa-music"></i><span>Live Rabindra Sangeet</span></div>
+            <div class="param"><i class="fas fa-book"></i><span>Heritage Library</span></div>
+          </div>
+          <div class="meal-plans"><span class="meal-tag">🍳 Breakfast</span><span class="meal-tag">🍽️ Half
+              Board</span><span class="meal-tag">🌟 Full Board</span></div>
+          <div class="hotel-actions">
+            <a href="room_booking.html?hotel=victoria-heritage" class="btn-book">Book Room</a>
+            <a href="table_booking.html" class="btn-book btn-book-alt">Book Table</a>
+            <a href="food_order.html" class="btn-book btn-book-food">Order Food</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======== DINING SECTION ======== -->
+  <section id="food" class="section dining-section">
+    <div class="section-header light">
+      <p class="section-tag">Culinary Journey</p>
+      <h2>Signature Dishes</h2>
+      <p class="section-sub">From royal Hyderabadi Biryani to coastal Mumbai seafood — taste India on every plate.</p>
+    </div>
+    <div class="food-grid">
+      <div class="food-card"><img src="image_list/Food Dining Section/food-biryani.jpg" alt="Biryani" loading="lazy" />
+        <div class="food-label"><span>Dum Biryani</span><a href="food_order.html">Order →</a></div>
+      </div>
+      <div class="food-card"><img src="image_list/Food Dining Section/food-pizza.jpg" alt="Pizza" loading="lazy" />
+        <div class="food-label"><span>Wood-Fire Pizza</span><a href="food_order.html">Order →</a></div>
+      </div>
+      <div class="food-card"><img src="image_list/Food Dining Section/food-burger.jpg" alt="Burger" loading="lazy" />
+        <div class="food-label"><span>Signature Burger</span><a href="food_order.html">Order →</a></div>
+      </div>
+      <div class="food-card"><img src="image_list/Food Dining Section/food-thali.jpg" alt="Thali" loading="lazy" />
+        <div class="food-label"><span>Grand Thali</span><a href="food_order.html">Order →</a></div>
+      </div>
+      <div class="food-card"><img src="image_list/Food Dining Section/food-coffee.jpg" alt="Coffee" loading="lazy" />
+        <div class="food-label"><span>Artisan Coffee</span><a href="food_order.html">Order →</a></div>
+      </div>
+      <div class="food-card"><img src="image_list/Food Dining Section/food-gulabjamun.jpg" alt="Dessert"
+          loading="lazy" />
+        <div class="food-label"><span>Gulab Jamun Fondue</span><a href="food_order.html">Order →</a></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="food_order.html" class="btn-primary">View Full Menu &amp; Order</a>
+    </div>
+  </section>
+
+  <!-- ======== ABOUT ======== -->
+  <section id="about" class="section about-section">
+    <div class="about-grid">
+      <div class="about-img-col">
+        <img src="image_list/Homepage/hotel-lutyens.jpg" alt="Hotel Lobby" class="about-img-main" />
+        <img src="image_list/Homepage/about-dining.jpg" alt="Fine Dining" class="about-img-secondary" />
+      </div>
+      <div class="about-text-col">
+        <p class="section-tag">Our Story</p>
+        <h2>Born in India.<br />Built for Travellers.</h2>
+        <p>StayNamasté was born from a simple belief — that every traveller deserves to experience India the way locals
+          do.</p>
+        <p>From the chaotic magic of Mumbai's streets to the quiet grandeur of Delhi's heritage corridors — we are your
+          gateway to India's soul.</p>
+        <div class="about-features">
+          <div class="ab-feat"><i class="fas fa-shield-alt"></i><span>100% Verified Hotels</span></div>
+          <div class="ab-feat"><i class="fas fa-rupee-sign"></i><span>Best Price Guarantee</span></div>
+          <div class="ab-feat"><i class="fas fa-headset"></i><span>24/7 Concierge Support</span></div>
+          <div class="ab-feat"><i class="fas fa-undo"></i><span>Free Cancellation</span></div>
+        </div>
+        <a href="registration.html" class="btn-primary" style="margin-top:1.5rem;display:inline-block">Join
+          StayNamasté</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SPECIAL OFFERS WITH PROMO ======== -->
+  <section class="offers-section">
+    <div class="section-header">
+      <p class="section-tag">Limited Time</p>
+      <h2>Exclusive Deals</h2>
+    </div>
+    <!-- PROMO CODE BOX -->
+    <div class="promo-box">
+      <div class="promo-inner">
+        <div class="promo-icon">🎟️</div>
+        <div>
+          <h4>Got a Promo Code?</h4>
+          <p>Enter your code and get instant discount on your booking</p>
+        </div>
+        <div class="promo-input-wrap">
+          <input type="text" id="promoInput" placeholder="e.g. STAY20, FIRST50" />
+          <button onclick="applyPromo()" class="btn-primary" style="padding:0.6rem 1.2rem">Apply</button>
+        </div>
+        <div class="promo-result" id="promoResult"></div>
+      </div>
+    </div>
+    <div class="offers-grid">
+      <div class="offer-card offer-gold">
+        <div class="offer-icon">🏨</div>
+        <h3>Early Bird Room Deal</h3>
+        <p>Book 7 days in advance and save up to <strong>30%</strong> on any room. Use code <strong>EARLY30</strong></p>
+        <a href="room_booking.html" class="offer-btn">Book Room</a>
+      </div>
+      <div class="offer-card offer-terracotta">
+        <div class="offer-icon">🍽️</div>
+        <h3>Weekend Dining Package</h3>
+        <p>Saturday dinner for 2 with welcome drinks + dessert — starting from just <strong>₹1,499</strong>. Code:
+          <strong>DINE15</strong>
+        </p>
+        <a href="table_booking.html" class="offer-btn">Reserve Table</a>
+      </div>
+      <div class="offer-card offer-green">
+        <div class="offer-icon">🌟</div>
+        <h3>Staycation Bundle</h3>
+        <p>Room + Breakfast + Dinner + Spa — complete package at <strong>₹7,999/night</strong>. Code:
+          <strong>BUNDLE25</strong>
+        </p>
+        <a href="room_booking.html" class="offer-btn">Explore Bundle</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== REVIEWS SECTION ======== -->
+  <section class="reviews-section section">
+    <div class="section-header">
+      <p class="section-tag">Guest Stories</p>
+      <h2>Reviews & Ratings</h2>
+    </div>
+    <div class="reviews-summary">
+      <div class="review-score">4.8 <span>/ 5</span></div>
+      <div class="review-bars">
+        <div class="review-bar-row"><span>5★</span>
+          <div class="review-bar">
+            <div style="width:72%"></div>
+          </div><span>72%</span>
+        </div>
+        <div class="review-bar-row"><span>4★</span>
+          <div class="review-bar">
+            <div style="width:18%"></div>
+          </div><span>18%</span>
+        </div>
+        <div class="review-bar-row"><span>3★</span>
+          <div class="review-bar">
+            <div style="width:7%"></div>
+          </div><span>7%</span>
+        </div>
+        <div class="review-bar-row"><span>2★</span>
+          <div class="review-bar">
+            <div style="width:2%"></div>
+          </div><span>2%</span>
+        </div>
+        <div class="review-bar-row"><span>1★</span>
+          <div class="review-bar">
+            <div style="width:1%"></div>
+          </div><span>1%</span>
+        </div>
+      </div>
+      <div class="review-total">Based on <strong>2,463</strong> verified guest reviews</div>
+    </div>
+    <div class="testimonials-slider">
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"The Sea Palace in Mumbai exceeded every expectation. The rooftop dinner was magical!"</p>
+        <div class="testi-author"><strong>Priya Sharma</strong> · Mumbai <span class="verified-badge">✓ Verified
+            Guest</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Nizam's Palace served the most authentic Biryani I've ever had. The suite was palatial!"</p>
+        <div class="testi-author"><strong>Rahul Mehta</strong> · Pune <span class="verified-badge">✓ Verified
+            Guest</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★</div>
+        <p>"Victoria Heritage in Kolkata is absolutely charming. Live Rabindra Sangeet evenings were amazing."</p>
+        <div class="testi-author"><strong>Ananya Das</strong> · Kolkata <span class="verified-badge">✓ Verified
+            Guest</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Imperial Haveli is stunning. Butler service is incredible and the food rivals 5-star restaurants abroad."
+        </p>
+        <div class="testi-author"><strong>Vivek Nair</strong> · Bangalore <span class="verified-badge">✓ Verified
+            Guest</span></div>
+      </div>
+    </div>
+    <!-- WRITE REVIEW -->
+    <div class="write-review-box">
+      <h3>Share Your Experience</h3>
+      <div class="star-picker" id="starPicker">
+        <span onclick="setRating(1)">★</span><span onclick="setRating(2)">★</span>
+        <span onclick="setRating(3)">★</span><span onclick="setRating(4)">★</span>
+        <span onclick="setRating(5)">★</span>
+      </div>
+      <textarea id="reviewText" placeholder="Tell other guests about your stay..." rows="3"></textarea>
+      <button onclick="submitReview()" class="btn-primary" style="margin-top:0.8rem">Submit Review</button>
+      <div id="reviewSuccess" style="display:none;color:#2d7a50;margin-top:0.5rem;font-weight:600">✅ Thank you! Your
+        review has been submitted.</div>
+    </div>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section id="contact" class="contact-section section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-tag">Get in Touch</p>
+        <h2>We're Here for You</h2>
+        <p>Whether it's a special request, a last-minute booking, or just questions about our properties — reach out
+          anytime.</p>
+        <div class="contact-details">
+          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 97674 355XX</span></div>
+          <div class="contact-item"><i class="fas fa-envelope"></i><span>sushant.mamidwar@staynamaste.in</span></div>
+          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>HQ: 42 Marine Drive, Mumbai,
+              Maharashtra</span></div>
+          <div class="contact-item"><i class="fas fa-clock"></i><span>24 × 7 — Always available for you</span></div>
+        </div>
+        <!-- REFERRAL BOX -->
+        <div class="referral-box">
+          <h4>🎁 Refer a Friend — Get ₹200 Off!</h4>
+          <p>Share your referral code and earn ₹200 credit when your friend makes their first booking.</p>
+          <div class="referral-code-wrap">
+            <span class="referral-code" id="refCode">SUSHANT200</span>
+            <button onclick="copyReferral()" class="btn-primary"
+              style="padding:0.4rem 1rem;font-size:0.82rem">Copy</button>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" placeholder="Rahul Mehta" required />
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="rahul@email.com" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Subject</label>
+          <select>
+            <option>Room Booking Enquiry</option>
+            <option>Table Reservation</option>
+            <option>Food Order</option>
+            <option>Feedback</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Tell us how we can help you..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%">Send Message <i
+            class="fas fa-paper-plane"></i></button>
+        <div class="form-success" id="formSuccess">✅ Message sent! We'll get back to you shortly.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <!-- <div class="footer-logo">🕌 Stay<em>Namasté</em></div> -->
+
+        <div class="footer-logo">
+          <img src="logo.png" alt="StayNamasté Logo" class="footer-logo-img" />
+          <span>Stay<em>Namasté</em></span>
+        </div>
+        <p>Luxury stays, authentic dining, and unforgettable experiences across India's greatest cities.</p>
+        <div class="social-links">
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <li class="sushant-logo">
+          <a href="https://www.linkedin.com/in/sushant-mamidwar-9b4b90257" target="_blank">
+            <img src="Sushant_logo.png" alt="Sushant LinkedIn" class="nav-extra-logo" />
+          </a>
+        </li>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="room_booking.html">Book a Room</a>
+        <a href="table_booking.html">Reserve a Table</a>
+        <a href="food_order.html">Order Food</a>
+        <a href="dashboard.html">My Dashboard</a>
+        <a href="registration.html">Register</a>
+        <a href="login.html">Login</a>
+      </div>
+      <div class="footer-col">
+        <h4>Our Cities</h4>
+        <a href="#">Mumbai</a>
+        <a href="#">New Delhi</a>
+        <a href="#">Bangalore</a>
+        <a href="#">Hyderabad</a>
+        <a href="#">Chennai</a>
+        <a href="#">Kolkata</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Help Centre</a>
+        <a href="#">Cancellation Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Partner With Us</a>
+      </div>
+    </div>
+    <!-- <div class="footer-bottom">
+      <p>© 2026 StayNamasté. All rights reserved. | Created by <a href="#" style="color:var(--gold)">Sushant Sunil
+          Mamidwar</a></p>
+    </div> -->
+
+    <div class="footer-bottom">
+      <p>
+        © 2026 StayNamasté. All rights reserved. | Created by
+        <a href="https://www.linkedin.com/in/sushant-mamidwar-9b4b90257" target="_blank" rel="noopener noreferrer"
+          style="color:var(--gold)">
+          Sushant Sunil Mamidwar
+        </a>
+      </p>
+    </div>
+  </footer>
+
+
+
+  <!-- ======== CHATBOT ======== -->
+  <div class="chatbot-bubble" id="chatbotBubble" onclick="toggleChatbot()">
+    <i class="fas fa-comment-dots"></i>
+    <span class="chat-ping"></span>
+  </div>
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chat-header">
+      <div><strong>🤖 NamasteBot</strong><br /><small>Ask me anything!</small></div>
+      <button onclick="toggleChatbot()"
+        style="background:none;border:none;color:white;font-size:1.2rem;cursor:pointer">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Namaste! 🙏 I'm NamasBot. I can help you with room bookings, dining, food orders, and
+        more. What can I help you with today?</div>
+    </div>
+    <div class="chat-quick">
+      <button onclick="quickChat('Book a room')">Book Room</button>
+      <button onclick="quickChat('Order food')">Order Food</button>
+      <button onclick="quickChat('Book a table')">Book Table</button>
+      <button onclick="quickChat('My loyalty points')">My Points</button>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Type your message..."
+        onkeypress="if(event.key==='Enter')sendChat()" />
+      <button onclick="sendChat()" class="chat-send"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- ======== LOYALTY TOAST ======== -->
+  <div class="loyalty-toast" id="loyaltyToast">
+    🏆 You've earned <strong id="toastPoints">0</strong> loyalty points!
+  </div>
+
+  <!-- WISHLIST SIDEBAR -->
+  <div class="wishlist-sidebar" id="wishlistSidebar">
+    <div class="wishlist-header">
+      <h3>❤️ My Wishlist</h3>
+      <button onclick="toggleWishlistSidebar()"
+        style="background:none;border:none;font-size:1.3rem;cursor:pointer">✕</button>
+    </div>
+    <div id="wishlistItems">
+      <p style="color:var(--text-muted);padding:1rem">No saved hotels yet.</p>
+    </div>
+  </div>
+  <button class="wishlist-fab" onclick="toggleWishlistSidebar()" title="My Wishlist">
+    <i class="fas fa-heart"></i> <span id="wishlistCount">0</span>
+  </button>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

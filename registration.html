@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — StayNamasté</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="auth-page">
+    <div class="auth-visual">
+      <!-- <div class="visual-icon"></div> -->
+      <div class="visual-icon"><img src="logo.png" alt="StayNamasté Logo" class="auth-logo-img"></div>
+
+      <h2>Join StayNamasté</h2>
+      <p>Create your free account and unlock India's finest hotel experiences, dining, and exclusive member benefits.
+      </p>
+      <br /><br />
+      <div style="display:flex;flex-direction:column;gap:1rem;max-width:280px;text-align:left">
+        <div style="display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.8)"><i class="fas fa-gift"
+            style="color:var(--gold-light);width:20px"></i><span>₹500 welcome credit</span></div>
+        <div style="display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.8)"><i class="fas fa-percent"
+            style="color:var(--gold-light);width:20px"></i><span>Up to 30% member discounts</span></div>
+        <div style="display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.8)"><i class="fas fa-crown"
+            style="color:var(--gold-light);width:20px"></i><span>Priority room upgrades</span></div>
+        <div style="display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.8)"><i class="fas fa-headset"
+            style="color:var(--gold-light);width:20px"></i><span>Dedicated concierge</span></div>
+      </div>
+    </div>
+
+    <div class="auth-form-side">
+      <div class="auth-form-wrap">
+        <div class="auth-logo">🕌 Stay<em style="color:var(--teal);font-style:italic">Namasté</em></div>
+        <h2>Create Account</h2>
+        <p>Already a member? <a href="login.html">Sign in</a></p>
+
+        <form id="regForm" style="margin-top:2rem">
+          <div class="form-row">
+            <div class="form-field">
+              <label>First Name</label>
+              <input type="text" placeholder="Priya" required />
+            </div>
+            <div class="form-field">
+              <label>Last Name</label>
+              <input type="text" placeholder="Sharma" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" placeholder="priya@email.com" required />
+          </div>
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 98765 43210" required />
+          </div>
+          <div class="form-field">
+            <label>City</label>
+            <select>
+              <option value="">Select your city</option>
+              <option>Mumbai</option>
+              <option>Delhi</option>
+              <option>Bangalore</option>
+              <option>Hyderabad</option>
+              <option>Chennai</option>
+              <option>Kolkata</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Password</label>
+              <input type="password" placeholder="••••••••" required />
+            </div>
+            <div class="form-field">
+              <label>Confirm Password</label>
+              <input type="password" placeholder="••••••••" required />
+            </div>
+          </div>
+          <div style="margin-bottom:1.2rem;font-size:0.85rem;color:var(--text-muted)">
+            <label style="display:flex;align-items:flex-start;gap:0.5rem;cursor:pointer">
+              <input type="checkbox" required style="margin-top:3px;flex-shrink:0" />
+              I agree to the <a href="#" style="color:var(--teal)">Terms of Service</a> and <a href="#"
+                style="color:var(--teal)">Privacy Policy</a>
+            </label>
+          </div>
+          <button type="submit" class="auth-submit">Create My Account <i class="fas fa-user-plus"></i></button>
+        </form>
+
+        <div class="auth-switch" style="margin-top:1.5rem">Already registered? <a href="login.html">Sign in →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    document.getElementById('regForm').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('🎉 Welcome to StayNamasté!\n\nYour account has been created successfully. Your ₹500 welcome credit has been added!\n\nRedirecting you home...');
+      setTimeout(() => window.location.href = 'index.html', 800);
+    });
+  </script>
+</body>
+
+</html>

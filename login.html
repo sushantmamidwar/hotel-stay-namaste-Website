@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — StayNamasté</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-visual">
+    <div class="visual-icon"><img src="logo.png" alt="StayNamasté Logo" class="auth-logo-img"></div>
+    
+    <h2>Welcome Back</h2>
+    <p>Sign in to manage your bookings, order food, and access exclusive StayNamasté member offers.</p>
+    <br/><br/>
+    <div style="display:flex;flex-direction:column;gap:1rem;max-width:280px;text-align:left">
+      <div style="display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.8)"><i class="fas fa-bed" style="color:var(--gold-light);width:20px"></i><span>Track all room reservations</span></div>
+      <div style="display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.8)"><i class="fas fa-utensils" style="color:var(--gold-light);width:20px"></i><span>View dining history</span></div>
+      <div style="display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.8)"><i class="fas fa-star" style="color:var(--gold-light);width:20px"></i><span>Access member-only deals</span></div>
+      <div style="display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.8)"><i class="fas fa-tag" style="color:var(--gold-light);width:20px"></i><span>Earn loyalty points</span></div>
+    </div>
+  </div>
+
+  <div class="auth-form-side">
+    <div class="auth-form-wrap">
+      <div class="auth-logo">🕌 Stay<em style="color:var(--teal);font-style:italic">Namasté</em></div>
+      <h2>Sign In</h2>
+      <p>Don't have an account? <a href="registration.html">Register free</a></p>
+
+      <form id="loginForm" style="margin-top:2rem">
+        <div class="form-field">
+          <label>Email Address</label>
+          <input type="email" placeholder="yourname@email.com" required />
+        </div>
+        <div class="form-field">
+          <label>Password</label>
+          <input type="password" placeholder="••••••••" required />
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;font-size:0.85rem">
+          <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;color:var(--text-muted)">
+            <input type="checkbox" /> Remember me
+          </label>
+          <a href="#" style="color:var(--teal);font-weight:500">Forgot password?</a>
+        </div>
+        <button type="submit" class="auth-submit">Sign In <i class="fas fa-arrow-right"></i></button>
+      </form>
+
+      <div class="form-divider"><span>or continue with</span></div>
+      <div style="display:flex;gap:1rem;margin-bottom:1.5rem">
+        <button onclick="alert('Google sign-in coming soon!')" style="flex:1;padding:0.7rem;border:1.5px solid var(--border);border-radius:8px;background:white;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.6rem;font-family:'DM Sans',sans-serif;font-size:0.88rem">
+          <img src="https://www.svgrepo.com/show/475656/google-color.svg" width="18" height="18" alt="G"/> Google
+        </button>
+        <button onclick="alert('Phone OTP coming soon!')" style="flex:1;padding:0.7rem;border:1.5px solid var(--border);border-radius:8px;background:white;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.6rem;font-family:'DM Sans',sans-serif;font-size:0.88rem">
+          📱 Phone OTP
+        </button>
+      </div>
+
+      <div class="auth-switch">New to StayNamasté? <a href="registration.html">Create account →</a></div>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script>
+document.getElementById('loginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('🎉 Welcome back!\n\nYou have been signed in successfully. Redirecting to your dashboard...');
+  setTimeout(() => window.location.href = 'index.html', 800);
+});
+</script>
+</body>
+</html>
