@@ -16,7 +16,7 @@
 
 🔗 [View Live Website](https://sushantmamidwar.github.io/hotel-stay-namaste) 
 ..
-🔗 [View Live Website](https://hotel-staynamaste-sushantmamidwar6704.netlify.app/)
+🔗 [Hotel Stay Namaste](https://hotel-staynamaste-sushantmamidwar6704.netlify.app/)
 
 ---
 
